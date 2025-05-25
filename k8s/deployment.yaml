@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ai-devops-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ai-devops-app
+  template:
+    metadata:
+      labels:
+        app: ai-devops-app
+    spec:
+      containers:
+      - name: ai-devops-container
+        image: mustafaa1998/ai-devops-app:latest
+        ports:
+        - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ai-devops-service
+spec:
+  selector:
+    app: ai-devops-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3000
+  type: LoadBalancer

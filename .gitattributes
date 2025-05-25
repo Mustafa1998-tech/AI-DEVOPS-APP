@@ -1,0 +1,2 @@
+app/minikube.exe filter=lfs diff=lfs merge=lfs -text
+jenkins.war filter=lfs diff=lfs merge=lfs -text
